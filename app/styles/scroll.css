@@ -1,0 +1,83 @@
+/* 滚动条所在容器 */
+.scroll-container {
+  margin: 10px;
+  width: 500px;
+  height: 150px;
+  overflow: overlay;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+/* 滚动条整体 */
+.scroll-container::-webkit-scrollbar {
+  height: 20px;
+  width: 20;
+}
+
+/* 两个滚动条交接处 -- x轴和y轴 */
+.scroll-container::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* 滚动条滑块 */
+.scroll-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #535353;
+}
+
+/* 滚动条轨道 */
+.scroll-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: transparent;
+}
+
+/* 滚动条两端按钮 */
+.scroll-container::-webkit-scrollbar-button {
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* 纵向滚动条*/
+  height: 10px; /* 横向滚动条 */
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); */
+  background: transparent;
+
+  &:horizontal {
+    /* background-color: blue; */
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  /* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); */
+  background: rgba(61, 132, 201);
+
+  &:vertical {
+    /* background-color: red; */
+  }
+}
+
+::-webkit-scrollbar-button {
+  &:decrement {
+    /* background-color: purple; */
+  }
+
+  &:increment {
+    /* background-color: green; */
+  }
+}
+
+::-webkit-scrollbar-track-piece {
+  &:decrement {
+    /* background-color: red; */
+  }
+
+  &:increment {
+    /* background-color: blue; */
+  }
+}
