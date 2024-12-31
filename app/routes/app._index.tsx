@@ -25,7 +25,7 @@ const DATA_DIR = path.join(process.cwd(), "data");
 export async function loader({ request }: LoaderFunctionArgs) {
   const files = await fs.promises.readdir(DATA_DIR, { withFileTypes: true });
 
-  const markdownFiles = files.filter((file) => file.name.endsWith(".markdown"));
+  const markdownFiles = files.filter((file) => file.name.endsWith(".md"));
 
   const markdownContents = await Promise.all(
     markdownFiles.map(async (file) => {
@@ -62,11 +62,7 @@ export async function action({ request }: ActionFunctionArgs) {
     }
 
     markdownList.forEach((list) => {
-      const DATA_FILE = path.join(
-        process.cwd(),
-        "data",
-        `${list.fileName}.markdown`
-      );
+      const DATA_FILE = path.join(process.cwd(), "data", `${list.fileName}.md`);
       fs.writeFileSync(DATA_FILE, list.content, "utf-8");
     });
 
@@ -135,6 +131,13 @@ export default function Index() {
           LSNOTE
         </h1>
 
+        <div className="max-h-[500px] overflow-auto resize-y">
+          <iframe
+            className="h-full w-full"
+            src="https://markdown.com.cn/"
+          ></iframe>
+        </div>
+
         <div className="mt-6">
           <ClientOnly fallback={<LoaderCircle className=" animate-spin" />}>
             {() => (
@@ -174,7 +177,7 @@ export default function Index() {
             markdownList.map((list, index) => (
               <div
                 key={index}
-                className="bg-gray-50 p-4 border border-gray-200 rounded-md shadow-sm hover:shadow-lg transition duration-200"
+                className="bg-gray-50 p-4 border border-gray-200 rounded-md shadow-sm hover:shadow-lg transition duration-200 max-h-[200px] overflow-auto"
               >
                 <div className="flex justify-between items-start">
                   <div className="prose max-w-none">
